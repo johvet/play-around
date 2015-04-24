@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ART19 Web Player</title>
+        <meta name="description" content="ART19 Web Player">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/art19-web-player.css">
+
+        <!-- These styles are not for the player -->
+        <style type="text/css">
+          .container{
+            margin: 0 auto;
+            padding: 15px;
+            max-width: 720px;
+          }
+        </style>
+
+    </head>
+    <body>
+
+      <div class="art19-web-player"></div>
+
+      <div class="container">
+
+        <h1>ART19 Web player</h1>
+        <hr>
+        <p>
+          <h3>Customization Options</h3>
+          <ol>
+            <li>Custom stylesheet / Skins (we can offer full customizable flexibility if we want to)</li>
+            <li>Background Color</li>
+            <li>Text Color</li>
+            <li>Primary Color (play button, waveform Playhead location)</li>
+            <li>Responsive (true/false) If set to true, Player will automatically adjust size and layout depending on your screen</li>
+            <li>Logo version (image can be set)</li>
+          </ol>
+        </p>
+        <p>
+          <h3>Issues</h3>
+          <ol>
+            <li><s>Not sure how to change volume .active colors to match Primary Color. Need to figure out a way to do this.</s> Solved with "currentColor" css solution.</li>
+          </ol>
+        </p>
+
+        <br><br>
+
+        <!-- The actual player -->
+
+        <div class="awp awp-container awp-paused awp-stopped">
+          <audio id="audiofile">
+            <source src="https://art19-development.s3-us-west-1.amazonaws.com/segment_lists/49760cec-7428-4050-a96a-b60d5ecdb019/20150422-VEhTUy4zLTMwLTIwMTUuQ0Y5NkstU0cubXAz-47579d48-bbd0-4361-b719-f6df6d40d11f.mp3" type="audio/mpeg">
+          </audio>
+          <div class="awp-left">
+            <img src="https://placeimg.com/200/200" alt="thumbnail" class="awp-thumbnail">
+          </div>
+          <div class="awp-right">
+            <div class="awp-brand-logo"><img src="images/art19-logo-white.png" alt="ART19"></div>
+            <div class="awp-media-description">
+              <div class="awp-series-name"> Not Never Funny </div>
+              <div class="awp-episode-name"> Episode 16C - Pellentesque Fusce Tellus Amet Purus </div>
+            </div>
+            <div class="awp-media-actions">
+              <ul>
+                <li><a href="#">
+                  <i class="icon icon-export"></i>
+                  <span> Share </span>
+                </a></li>
+                <li><a href="#">
+                  <i class="icon icon-rss"></i>
+                  <span> Subscribe </span>
+                </a></li>
+                <li><a href="#">
+                  <i class="icon icon-heart"></i>
+                  <span> Like </span>
+                </a></li>
+                <li><a href="#">
+                  <i class="icon icon-comment"></i>
+                  <span> Comment </span>
+                </a></li>
+              </ul>
+            </div>
+            <div class="awp-media-controls">
+              <div class="awp-media-controls-left">
+                <a href="#" class="awp-play-toggle awp-control" onclick="playFile()">
+                  <i class="icon icon-play"></i>
+                  <i class="icon icon-pause"></i>
+                </a>
+                <a href="#" class="awp-next awp-control">
+                  <i class="icon icon-to-end-alt"></i>
+                </a>
+              </div>
+              <div class="awp-media-controls-right">
+                <div class="awp-waveform">
+                  <div id="peaks-container"></div>
+                </div>
+                <div class="awp-trt">
+                  <span class="awp-current-time">00:00:00:00</span>
+                  /
+                  <span class="awp-total-time">00:00:00:00</span>
+                </div>
+                <div class="awp-volume-control">
+                  <a class="awp-mute" onclick="muteVolume()">
+                    <i class="icon icon-volume-off"></i>
+                    <span class="times">&times;</span>
+                  </a>
+                  <div class="awp-volume-range">
+                    <a data-value="25" class="active" onclick="changeVolume(25)"></a>
+                    <a data-value="50" class="active" onclick="changeVolume(50)"></a>
+                    <a data-value="75" class="active" onclick="changeVolume(75)"></a>
+                    <a data-value="100" class="active" onclick="changeVolume(100)"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <script src="assets/art19-web-player.js"></script>
+
+    </body>
+</html>

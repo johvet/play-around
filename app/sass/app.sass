@@ -1,0 +1,245 @@
+/////////////
+// Imports //
+/////////////
+
+/////////////
+// Mixins  //
+/////////////
+
+@mixin micro-clearfix
+  &:before,&:after
+    content: " "
+    display: table
+  &:after
+    clear: both
+  *zoom: 1
+
+/////////////////////////
+// ART19 Player styles //
+/////////////////////////
+
+$padding: 20px
+$defaultPlayerHeight: 200px
+$thumbSize: $defaultPlayerHeight
+$logoWidth: 64px
+
+
+
+.awp
+  // General Styles and overrides goes here  //
+  -webkit-font-smoothing: antialiased
+  font-size: 14px
+
+  position: relative
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2)
+  height: $defaultPlayerHeight
+  display: table
+  width: 720px
+  table-layout: fixed
+  background: rgb(35, 49, 58)
+  color: white
+
+  a
+    text-decoration: none
+    color: inherit
+
+  .awp-left, .awp-right
+    height: 100%
+    position: relative
+    display: table-cell
+    vertical-align: top
+
+  .awp-left
+    overflow: hidden
+
+  .awp-right
+    padding: $padding
+
+  .awp-thumbnail
+    height: 100%
+    vertical-align: top
+
+  .awp-brand-logo
+    width: $logoWidth
+    position: absolute
+    right: $padding
+    top: $padding
+    img
+      width: 100%
+
+  .awp-media-description
+    margin-right: $logoWidth + $padding
+    position: relative
+
+  .awp-series-name, .awp-media-actions li a, .awp-mute, .awp-volume-range > a
+    opacity: 0.7
+
+  .awp-media-actions li a, .awp-mute, .awp-volume-range > a
+    transition: opacity 0.5s ease
+    &:hover
+      opacity: 1
+
+  .awp-episode-name
+    margin: 5px 0
+    font-size: 1.2em
+    font-weight: 600
+
+  .awp-series-name, .awp-episode-name
+    white-space: nowrap
+    text-overflow: ellipsis
+    overflow: hidden
+    width: 100%
+
+  .awp-media-actions
+    ul
+      list-style: none
+      margin: 10px 0
+      padding: 0
+      +micro-clearfix
+
+      li
+        float: left
+        margin-right: 20px
+        font-size: 0.7em
+        text-transform: uppercase
+
+
+  .awp-media-controls
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    width: 100%
+    padding: $padding
+    box-sizing: border-box
+    display: table
+
+  .awp-media-controls-left
+    width: 1px
+    padding-right: $padding / 2
+    white-space: nowrap
+
+  .awp-media-controls-left, .awp-media-controls-right
+    display: table-cell
+    vertical-align: bottom
+
+
+  .awp-control
+    border-radius: 100px
+    text-align: center
+    color: rgb(57, 202, 117)
+    border: 2px solid rgb(57, 202, 117)
+    display: inline-block
+    transition: transform 0.5s ease
+    width: 36px
+    height: 36px
+    line-height: 36px
+    margin-right: $padding / 2
+    &:hover
+      transform: scale(1.05)
+
+
+  .awp-play-toggle
+    width: 72px
+    height: 72px
+    line-height: 72px
+    font-size: 2em
+    .icon-play, .icon-pause
+      display: none
+
+  .awp-next
+    display: none
+
+  &.awp-playing
+    .awp-play-toggle .icon-pause
+      display: inline-block
+
+  &.awp-stopped, &.awp-paused
+    .awp-play-toggle .icon-play
+      display: inline-block
+
+  .awp-trt
+    font-size: 0.7em
+    float: left
+
+  .awp-volume-control
+    float: right
+
+  .awp-mute
+    width: 16px
+    display: inline-block
+    position: relative
+    .times
+      position: absolute
+      display: none
+      top: 1px
+      font-size: 10px
+      right: -4px
+      color: red
+      font-weight: bold
+    &.muted .times
+      display: block
+
+
+  .awp-volume-range
+    display: inline-block
+    height: 12px
+    position: relative
+    font-size: 0
+    > a
+      width: 3px
+      box-sizing: border-box
+      display: inline-block
+      margin-left: 1px
+      cursor: pointer
+      border-bottom-color: white
+      border-bottom-style: solid
+      height: 100%
+      color: rgb(57, 202, 117)
+      &.active:not(.muted)
+        border-color: currentColor
+        opacity: 1
+    [data-value="25"]
+      border-bottom-width: 3px
+    [data-value="50"]
+      border-bottom-width: 6px
+    [data-value="75"]
+      border-bottom-width: 9px
+    [data-value="100"]
+      border-bottom-width: 12px
+
+
+  .awp-waveform
+    height: 50px
+    overflow: hidden
+    margin-bottom: 5px
+    .zoom-container
+      visibility: hidden
+      height: 0
+
+
+  // Responsive styles when responsive option selected
+
+  &.awp-responsive
+    width: 100%!important
+
+  @media (max-width: 600px)
+    .awp-left
+      width: 100px!important
+
+  @media (max-width: 490px)
+    display: block
+    height: auto!important
+    .awp-left
+      width: 100%!important
+      max-height: 200px
+      img
+        width: 100%
+    .awp-left, .awp-right
+      display: block
+    .awp-media-controls
+      position: relative
+      padding: 0
+      margin-top: $padding
+
+

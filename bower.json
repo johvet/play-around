@@ -1,0 +1,24 @@
+{
+  "name": "ART19-Web-Player",
+  "version": "0.0.1",
+  "authors": [
+    "Johannes Vetter <johannes@art19.com>"
+  ],
+  "description": "HTML Web-Player for ART19",
+  "license": "(c) 2015 ART19, Inc.",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "moment": "~2.10.2"
+  },
+  "devDependencies": {
+    "requirejs": "~2.1.17"
+  }
+}
