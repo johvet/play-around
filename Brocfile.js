@@ -7,6 +7,7 @@ var mergeTrees = require('broccoli-merge-trees');
 var findBowerTrees = require('broccoli-bower');
 var pickFiles = require('broccoli-static-compiler');
 var compileES6 = require('broccoli-es6-concatenator')
+var browserify = require('broccoli-browserify')
 // Specify the Sass and Coffeescript directories
 var sassDir = 'app/sass';
 var coffeeDir = 'app/coffeescript';
